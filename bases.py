@@ -23,6 +23,13 @@ def decode(digits, base):
     # ...
     # TODO: Decode digits from any base (2 up to 36)
     # ...
+    base10 = 0
+    digits = digits[::-1] #reverse the digits
+    for i in range(len(digits)):
+        digit = int(digits[i], base=base)
+        print(digit)
+        base10 += digit * base ** i
+    return base10
 
 
 def encode(number, base):
@@ -59,7 +66,9 @@ def convert(digits, base1, base2):
     # ...
     # TODO: Convert digits from any base to any base (2 up to 36)
     # ...
-
+    base10 = decode(digits, base1)
+    result = encode(base10, base2)
+    return result
 
 def main():
     """Read command-line arguments and convert given digits between bases."""
