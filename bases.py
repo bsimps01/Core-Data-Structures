@@ -47,6 +47,17 @@ def encode(number, base):
     # ...
     # TODO: Encode number in any base (2 up to 36)
     # ...
+    contain = ""
+
+    while number > 0:
+        number, remainder = divmod(number, base)
+
+        if remainder >= 10:
+            contain += chr(remainder + 87)
+        else:
+            contain += str(remainder)
+    return contain[::-1]
+
 
 
 def convert(digits, base1, base2):
