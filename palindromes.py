@@ -7,6 +7,14 @@ import re
 # string.ascii_uppercase is 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 # string.ascii_letters is ascii_lowercase + ascii_uppercase
 
+def lower_case(text):
+    word = ""
+    text = text.lower()
+
+    for i in text:
+        if i in string.ascii_lowercase:
+            word += i
+    return word
 
 def is_palindrome(text):
     """A string of characters is a palindrome if it reads the same forwards and
@@ -14,7 +22,8 @@ def is_palindrome(text):
     # implement is_palindrome_iterative and is_palindrome_recursive below, then
     # change this to call your implementation to verify it passes all tests
     assert isinstance(text, str), 'input is not a string: {}'.format(text)
-    # return is_palindrome_iterative(text)
+    text = lower_case(text)
+    #return is_palindrome_iterative(text)
     return is_palindrome_recursive(text)
 
 
@@ -22,7 +31,7 @@ def is_palindrome_iterative(text):
     # TODO: implement the is_palindrome function iteratively here
     # once implemented, change is_palindrome to call is_palindrome_iterative
     # to verify that your iterative implementation passes all tests
-
+    text = lower_case(text)
     left = 0
     right = len(text) - 1
 
@@ -38,7 +47,7 @@ def is_palindrome_recursive(text, left=None, right=None):
     # TODO: implement the is_palindrome function recursively here
     # once implemented, change is_palindrome to call is_palindrome_recursive
     # to verify that your iterative implementation passes all tests
-
+    text = lower_case(text)
     if left == None and right == None:
         left = 0
         right = len(text) - 1
@@ -51,7 +60,7 @@ def is_palindrome_recursive(text, left=None, right=None):
     else:
         left = left + 1
         right = right - 1
-        return is_palindrome_recursive(text)
+        return is_palindrome_recursive(text, left, right)
 
 def main():
     import sys
