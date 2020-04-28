@@ -23,16 +23,13 @@ class LinkedStack(object):
         """Return True if this stack is empty, or False otherwise."""
         # TODO: Check if empty
 
-        if self.list = None:
-            return True
-        else:
-            return False
+        return self.list.is_empty()
 
     def length(self):
         """Return the number of items in this stack."""
         # TODO: Count number of items
 
-        return self.list.size 
+        return self.list.length()
 
     def push(self, item):
         """Insert the given item on the top of this stack.
@@ -45,7 +42,7 @@ class LinkedStack(object):
         """Return the item on the top of this stack without removing it,
         or None if this stack is empty."""
         # TODO: Return top item, if any
-        if self.is_empty()
+        if self.is_empty():
             return None
         else:
             return self.list.head.data
@@ -58,9 +55,8 @@ class LinkedStack(object):
         if self.is_empty():
             raise ValueError("Empty Stack")
         else:
-            self.list.head = self.list.head.next
-            self.list.size -= 1
             item = self.list.head.data
+            self.list.delete(item)
             return item
 
 
@@ -83,21 +79,22 @@ class ArrayStack(object):
     def is_empty(self):
         """Return True if this stack is empty, or False otherwise."""
         # TODO: Check if empty
-        if self.list = None:
-            return True
-        else:
+        if self.list is not None:
             return False
+        else:
+            return True
 
     def length(self):
         """Return the number of items in this stack."""
         # TODO: Count number of items
-        return range(len(self.list))
+        return range(self.list)
 
     def push(self, item):
         """Insert the given item on the top of this stack.
         Running time: O(???) – Why? [TODO]"""
         # TODO: Insert given item
-        self.list.append(item)
+        self.list.append(item) #inserts the item at the top of the stack
+        self.size += 1
 
     def peek(self):
         """Return the item on the top of this stack without removing it,
@@ -106,7 +103,7 @@ class ArrayStack(object):
         if self.is_empty():
             return None
         else:
-            return self.list[len(self.list) - 1]
+            return self.list[-1] #returns the item at the top of the stack
 
     def pop(self):
         """Remove and return the item on the top of this stack,
@@ -122,5 +119,7 @@ class ArrayStack(object):
 
 # Implement LinkedStack and ArrayStack above, then change the assignment below
 # to use each of your Stack implementations to verify they each pass all tests
-Stack = LinkedStack
-# Stack = ArrayStack
+#Stack = LinkedStack
+Stack = ArrayStack
+
+print(Stack)
