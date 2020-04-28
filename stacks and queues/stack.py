@@ -71,6 +71,7 @@ class ArrayStack(object):
         if iterable is not None:
             for item in iterable:
                 self.push(item)
+        self.size = 0
 
     def __repr__(self):
         """Return a string representation of this stack."""
@@ -79,7 +80,7 @@ class ArrayStack(object):
     def is_empty(self):
         """Return True if this stack is empty, or False otherwise."""
         # TODO: Check if empty
-        if self.list is not None:
+        if len(self.list) != 0:
             return False
         else:
             return True
@@ -87,12 +88,16 @@ class ArrayStack(object):
     def length(self):
         """Return the number of items in this stack."""
         # TODO: Count number of items
-        return range(self.list)
+        count = 0
+        for item in self.list:
+            count += 1
+        return count
 
     def push(self, item):
         """Insert the given item on the top of this stack.
         Running time: O(???) – Why? [TODO]"""
         # TODO: Insert given item
+        self.size = 0
         self.list.append(item) #inserts the item at the top of the stack
         self.size += 1
 
@@ -114,12 +119,10 @@ class ArrayStack(object):
             raise ValueError("Empty Stack")
         else:
             item = self.peek()
-            self.list.pop(len(self.list) - 1)
+            self.list.pop(len(self.list) -1)
             return item
 
 # Implement LinkedStack and ArrayStack above, then change the assignment below
 # to use each of your Stack implementations to verify they each pass all tests
-#Stack = LinkedStack
-Stack = ArrayStack
-
-print(Stack)
+Stack = LinkedStack
+#Stack = ArrayStack
