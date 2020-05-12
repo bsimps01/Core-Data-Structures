@@ -1,13 +1,13 @@
-def reverse_str(my_string):
-    my_stack = []
+def reverse_numbers(combo):
+    stack = []
 
-    for character in my_string:
-        my_stack.append(character)
+    for num in combo:
+        stack.append(num)
 
-    reverse_str = ""
+    reverse_numbers = ""
 
-    while len(my_stack) != 0:
-        reverse_str += my_stack.pop(-1)
-    return reverse_str
+    while len(stack) != 0:
+        reverse_numbers += stack.pop(-1)
+    return reverse_numbers
 
-print(reverse_str("abc"))
+print(reverse_numbers("3479"))
