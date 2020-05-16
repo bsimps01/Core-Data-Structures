@@ -1,5 +1,5 @@
 #!python
-
+from queue import Queue
 
 class BinaryTreeNode(object):
 
@@ -125,6 +125,7 @@ class BinarySearchTree(object):
         TODO: Best case running time: ??? under what conditions?
         TODO: Worst case running time: ??? under what conditions?"""
         # Start with the root node
+        
         node = self.root
         # Loop until we descend past the closest leaf node
         while node is not None:
@@ -293,6 +294,8 @@ class BinarySearchTree(object):
         TODO: Memory usage: ??? Why and under what conditions?"""
         # TODO: Traverse in-order without using recursion (stretch challenge)
 
+
+
     def items_pre_order(self):
         """Return a pre-order list of all items in this binary search tree."""
         items = []
@@ -338,11 +341,12 @@ class BinarySearchTree(object):
         TODO: Running time: ??? Why and under what conditions?
         TODO: Memory usage: ??? Why and under what conditions?"""
         # TODO: Traverse left subtree, if it exists
-        ...
+        if node is not None:
         # TODO: Traverse right subtree, if it exists
-        ...
+            self._traverse_post_order_recursive(node.left, visit)
         # TODO: Visit this node's data with given function
-        ...
+            self._traverse_post_order_recursive(node.right, visit)
+            visit(node.data)
 
     def _traverse_post_order_iterative(self, node, visit):
         """Traverse this binary tree with iterative post-order traversal (DFS).
@@ -366,19 +370,21 @@ class BinarySearchTree(object):
         TODO: Running time: ??? Why and under what conditions?
         TODO: Memory usage: ??? Why and under what conditions?"""
         # TODO: Create queue to store nodes not yet traversed in level-order
-        queue = ...
+        queue = Queue()
         # TODO: Enqueue given starting node
-        ...
+        queue.enqueue(start_node)
         # TODO: Loop until queue is empty
-        while ...:
+        while not queue.is_empty():
             # TODO: Dequeue node at front of queue
-            node = ...
+            node = queue.dequeue()
             # TODO: Visit this node's data with given function
-            ...
+            visit.append(node.data)
             # TODO: Enqueue this node's left child, if it exists
-            ...
+            if node.left:
+                queue.enqueue(node.left)
             # TODO: Enqueue this node's right child, if it exists
-            ...
+            if node.right:
+                queue.enqueue(node.right)
 
 
 def test_binary_search_tree():
